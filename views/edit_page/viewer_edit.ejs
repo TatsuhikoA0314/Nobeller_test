@@ -1,0 +1,38 @@
+    
+    <%- include('../include/header'); %>
+    <body>
+        <div class="post-wrapper">
+            <% if (errors.length > 0) { %>            
+                <ul class="errors">                   
+                  <% errors.forEach(error => { %>            
+                    <li class="red"><%= error %></li>            
+                  <% }); %>            
+                </ul>            
+              <% } %>
+            <form action="/Update_viewer?contents_id=<%= edit_page.contents_id %>" method="post">
+                <fieldset>
+                    <legend>ページ情報変更</legend>
+
+                    <h3>サブタイトル(オリジナル)：</h3>
+                    <textarea class="text-input"  placeholder="サブタイトルをこちらにお書きください。"><%= original.subtitle%></textarea>
+                    
+                    <h3>サブタイトル：</h3>
+                    <textarea class="text-input" name="subtitle" placeholder="サブタイトルをこちらにお書きください。"><%= edit_page.subtitle%></textarea>
+                    
+                    <h3>本文(オリジナル)：</h3>
+                    <textarea class="nobel-translate" placeholder="本文をこちらにお書きください。右下よりボックスのサイズを変更できます。"><%- original.contents.replace(/(<br>|<br \/>)/gi, '\n');%></textarea> 
+                    
+                    <h3>本文：</h3>
+                    <textarea class="nobel-translate" name="contents" placeholder="本文をこちらにお書きください。右下よりボックスのサイズを変更できます。"><%- edit_page.contents.replace(/(<br>|<br \/>)/gi, '\n');%></textarea> 
+                    
+                    <div class="submit">
+                        <input type="submit" value="送信する">
+                        <input type="reset" value="リセット">
+                    </div>
+                </fieldset>   
+            </form>
+            
+        </div>
+    </body>
+    <%- include('../include/footer'); %>
+</html>

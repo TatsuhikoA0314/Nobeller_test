@@ -1,0 +1,52 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="search-wrapper">
+        <h1>MY LIKES</h1>
+        <% var i = 0;%>
+        <% var x;%>
+        <% var y;%>
+        <% var length = 10;%>
+        <%if(Liked.length==0){%>
+            <h2>no likes</h2>
+        <%}else{for (x = 1; x <= Math.ceil(Liked.length/10); x++){%>
+            <div class="selection" id=<%= "page-"+x %>>
+                <% if(x==Math.ceil(Liked.length/10)){length = Liked.length%10;}%>
+                    <%for (y=0; y < length; y++){%>
+                        <div class="search-list",>
+                            <a href="/contents?series_id=<%= Liked[i].series_id %>"><%= Liked[i].title %></a>：<a href="/author?author_id=<%= Liked[i].author_id %>"><%= Liked[i].author_name %></a>
+                            <i class="fas fa-heart fa-lg "><%= Liked[i].likes %></i> 
+                            <i class="far fa-eye fa-lg "><%= Liked[i].viewed %></i>
+                            <p class="description"><%= Liked[i].discription %></p>
+                        </div>
+                        <% i++;%>
+                    <% }%>
+            </div>
+        <% }}%>  
+
+        <div class="pagination-holder clearfix">
+            <div id="light-pagination" class="pagination">i:<%=i%></div>
+        </div>
+
+        <script>
+            $(function(){
+                $(".pagination").pagination({
+                    items: <%=Liked.length%>,
+                    itemsOnPage: 10,
+                    cssStyle: 'light-theme',
+                    onPageClick: function(currentPageNumber){
+                        showPage(currentPageNumber);
+                    }
+                })
+            });
+            function showPage(currentPageNumber){
+                var page="#page-" + currentPageNumber;
+                $('.selection').hide();
+                $(page).show();
+            } 
+            </script>
+    
+</body>
+<%- include('../include/footer'); %>
+</html>

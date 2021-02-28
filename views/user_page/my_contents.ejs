@@ -1,0 +1,51 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="conetents-wrapper">
+        <div class="conetents-detail">
+            <h1><a href="#"><%= my_contents[0].title %></a>：<a href="/author?author_id=<%= my_contents[0].author_id %>"><%= my_contents[0].author_name %></a>
+                <i class="fas fa-heart fa-lg "><%= my_contents[0].likes %></i></h1>
+                <span><%= my_contents[0].genre%></span>
+                <div class="btn_div">
+                    <input type="button" value="ADD" class="add_btn" onClick="window.location.href='/add_page?series_id=<%= my_contents[0].series_id %>'">
+                    <input type="button" value="EDIT" class="edit_btn" onClick="window.location.href='/edit_series?series_id=<%= my_contents[0].series_id %>'">
+                    <input type="button" value="DELETE" class="delete_btn" id="openModal">
+                </div>
+            <p><%= my_contents[0].discription %></p>
+        </div>
+
+        <div class="conetents">
+            <h1>目次</h1>
+            <div class="conetents">
+                <ul>
+                    <% my_contents.forEach((my_content) => { %>
+                        <div>
+                            <li><a href="/my_page?contents_id=<%= my_content.contents_id %>&series_id=<%= my_content.series_id %>">
+                                <%= my_content.subtitle %> </a> <span><%= my_content.date.getFullYear() %>/<%= my_content.date.getMonth()+1 %>/<%= my_content.date.getDate() %> 
+                                    <%= my_content.date.getHours() %>:<%= my_content.date.getMinutes() %>:<%= my_content.date.getSeconds() %></span></li>
+                        </div>
+                    <% }) %>  
+                </ul>          
+            </div>  
+        </div>
+
+        <!-- モーダルエリアここから -->
+        <section id="modalArea" class="modalArea">
+            <div id="modalBg" class="modalBg"></div>
+                <div class="modalWrapper">
+                    <div class="modalContents">
+                        <h1>削除</h1>
+                        <p>本当に削除してもよろしいですか？</p>
+                        <input type="button" value="delete" onClick="window.location.href='/delete_series?series_id=<%= my_contents[0].series_id %>'">
+                    </div>
+                    <div id="closeModal" class="closeModal">
+                ×
+                </div>
+            </div>
+        </section>      
+        
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

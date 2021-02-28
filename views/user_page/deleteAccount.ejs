@@ -1,0 +1,35 @@
+
+<%- include('../include/header'); %>
+
+<body>
+  <div class="delAccount-wrapper">
+    <% if (errors > 0) { %>                                        
+        <h4 class="red">password is wrong</h4>                       
+    <% } %>
+      <h1>アカウント削除</h1>
+      <h3>こちらはアカウントのみの削除になります。投稿作品データはあらかじめ削除してください。</h3>
+      <h3 class="red">アカウントを削除した場合、投稿した作品以外のすべてのデータが削除されます。</h3>
+      <h3>上記を確認後、確認ボタンを押してください。</h3>
+      <input type="button" value="確認" class="delete_btn" id="openModal">
+  </div>
+</body>
+<%- include('../include/footer'); %>
+</html>
+
+<section id="modalArea" class="modalArea">
+    <div id="modalBg" class="modalBg"></div>
+        <div class="modalWrapper">
+            <div class="modalContents">
+                <form action="/deleteMyAccount" method="post">
+                    <h1>削除</h1>
+                    <h4>本当にアカウントを削除してもよろしいですか？</h4>
+                    <p>password:<input type="password" name="password"></p>
+                    <input type="submit" value="削除">    
+                    <!-- <input type="button" value="delete" onClick="window.location.href='/delete_series %>'"> -->
+                </form>
+            </div>
+            <div id="closeModal" class="closeModal">
+        ×
+        </div>
+    </div>
+</section>

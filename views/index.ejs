@@ -1,0 +1,118 @@
+
+    <%- include('./include/header'); %>
+
+    <div id="main-wrapper">
+
+        <div id="top-pickup">
+            <p id="pickup-thumb">
+                <img src="images/pickup.jpg" alt="ピックアップ画像">
+            </p>
+        </div>
+
+        <div id="top-news">
+            <h2>お知らせ</h2>
+        <ul>
+            <% if(notice===undefined){}else{for (x = 0; x < notice.length; x++){ %>
+                <li class="openModal"><div><p>2020-12-31 <a href="#"  id=<%="openModal"%>><%= notice[x].title %></a></p></div></li>
+                <% if(x > 5){break;} %>
+            <% }} %>
+            <%if(notice.length==0){}else{for (x = 0; x < notice.length; x++){%>
+                <section class="modalArea">
+                    <div id=<%="modalBg"%> class="modalBg"></div>
+                    <div class="modalWrapper">
+                        <div class="modalContents">
+                            <h1><%= notice[x].title %></h1>
+                            <p><%- notice[x].contents%></p>
+                        </div>
+                        <div class="closeModal" id=<%="closeModal"%>>
+                        ×
+                        </div>
+                    </div>
+                </section>
+            <% }}%>
+
+            <script>
+                $(function () { 
+                $('.openModal').click(function(){
+                    var x = $(this).index(); 
+                    $('.modalArea').eq(x).fadeIn();
+                });
+                $('.closeModal , .modalBg').click(function(){
+                  $('.modalArea').fadeOut();
+                });
+                });
+                y++;
+            </script>  
+        </ul>
+        </div>
+
+        <div>
+            <div id="top-left">
+                <div class="top-ad">
+                    <img src="images/add.jpg" alt="ここに広告を挿入">
+                </div>
+                <div class="top-ad">
+                    <img src="images/add.jpg" alt="ここに広告を挿入">
+                </div>
+            </div>
+        </div>
+        <div id="top-right">
+            <div id="top-rankings">
+                <h2>今週のランキング</h2>
+                <ul>
+                    <% if(ranking_list===undefined){}else{for (x = 0; x < ranking_list.length; x++){ %>
+                        <div class="ranking-list">
+                            <li>TITLE:<a href="/contents?series_id=<%= ranking_list[x].series_id %>"><%= ranking_list[x].title %></a>AUTHOR：<a href="#"><%= ranking_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= ranking_list[x].likes %></i> </li>
+                        </div>
+                        <% if(x > 1){%>
+                            <div class="more">
+                                <a href="/more_search?more=ranking">もっと見る</a>
+                            </div>
+                        <%break;} %>
+                    <% }} %>
+                </ul>
+            </div>
+        </div>
+
+        <div id="recommendation">
+            <div id="recommend-left">
+                <h2>おすすめの新着</h2>
+                <ul>
+                    <% if(new_list===undefined){}else{for (x = 0; x < new_list.length; x++){ %>
+                        <div>
+                            <li> TITLE:<a href="/contents?series_id=<%= new_list[x].series_id %>"><%= new_list[x].title %></a>AUTHOR：<a href="#"><%= new_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= new_list[x].likes %></i> </li>
+                        </div>
+                        <% if(x > 1){%>
+                            <div class="more">
+                                <a href="/more_search?more=new">もっと見る</a>
+                            </div>
+                        <%break;} %>
+                    <% }} %>
+                </ul>
+            </div>
+
+            <div id="recommend-right">
+                <h2>あなたにおすすめ</h2>
+                <ul>
+                    <% if(popular_list===undefined){}else{for (x = 0; x < popular_list.length; x++){ %>
+                        <div>
+                            <li>TITLE:<a href="/contents?series_id=<%= popular_list[x].series_id %>"><%= popular_list[x].title %></a>AUTHOR：<a href="#"><%= popular_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= popular_list[x].likes %></i> </li>
+                        </div>
+                        <% if(x > 1){%>
+                            <div class="more">
+                                <a href="/more_search?more=recomend">もっと見る</a>
+                            </div>
+                        <%break;} %>
+                    <% }} %>
+                </ul>
+            </div>
+        </div>
+        
+    </div><!-- #main_wrapper -->
+
+
+    <%- include('./include/footer'); %>
+
+</body>
+
+</html>

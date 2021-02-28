@@ -1,0 +1,19 @@
+
+<%- include('../include/header'); %>
+
+  <body>
+    <div class="login-wrapper">
+      <form action="/login" method="post">
+        <h2>ログイン</h2>
+        <p>メールアドレス</p>
+        <input type="text" name="email">
+        <p>パスワード</p>
+        <input type="password" name="password">
+        <input type="submit" value="ログイン">    
+      </form>
+    </div>
+  </body>
+  <%- include('../include/footer'); %>
+</html>
+
+

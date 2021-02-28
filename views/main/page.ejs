@@ -1,0 +1,37 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="page-wrapper">        
+
+        <div class="page-detail">
+            <h1><a href="/contents?series_id=<%= page.series_id %>"></a><%= page.title %></a>：<a href="/author?author_id=<%= page.author_id %>"><%= page.author_name %></a></h1>
+                <% if (locals.isLast){ %>
+                    <h3><a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3></h3>
+                <% } else { %>
+                    <h3><a href="/next?contents_id=<%= page.contents_id%>&series_id=<%= page.series_id %>">次へ</a>｜<a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3>
+                <% } %>
+                <% if (page.origin != 0){ %>
+                <div class="btn_div">
+                    <input type="button" value="TRANSLATE" class="edit_btn" onClick="window.location.href='/viewer_edit?contents_id=<%= page.contents_id %>'">
+                </div>
+                <% } %>
+                <p><%= page.discription %></p>
+        </div>
+
+        <div class="page-conetent">
+            <h2>| <%= page.subtitle %> |</h2>
+            <%- page.contents%>
+        </div>
+        <div class="next">
+            <% if (locals.isLast){ %>
+                <h3><a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3></h3>
+            <% } else { %>
+                <h3><a href="/next?contents_id=<%= page.contents_id%>&series_id=<%= page.series_id %>">次へ</a>｜<a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3>
+            <% } %>
+        </div>
+        
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

@@ -1,0 +1,50 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="page-wrapper">        
+
+        <div class="page-detail">
+            <h1><a href="/contents?series_id=<%= my_page.series_id %>"></a><%= my_page.title %></a>：<a href="/author?author_id=<%= my_page.author_id %>"><%= my_page.author_name %></a></h1>
+                <% if (locals.isLast){ %>
+                    <h3><a href="/my_contents?series_id=<%= my_page.series_id %>">目次へ</a></h3></h3>
+                <% } else { %>
+                    <h3><a href="/edit_next?contents_id=<%= my_page.contents_id%>&series_id=<%= my_page.series_id %>">次へ</a>｜<a href="/my_contents?series_id=<%= my_page.series_id %>">目次へ</a></h3>
+                <% } %>
+                <div class="btn_div">
+                    <input type="button" value="ADD" class="add_btn" onClick="window.location.href='/add_page?series_id=<%= my_page.series_id %>'">
+                    <input type="button" value="EDIT" class="edit_btn" onClick="window.location.href='/edit_page?contents_id=<%= my_page.contents_id %>'">
+                    <input type="button" value="DELETE" class="delete_btn" id="openModal">
+                </div>
+                <p><%= my_page.discription %></p>
+        </div>
+
+        <div class="page-conetent">
+            <h2>| <%= my_page.subtitle %> |</h2>
+            <%- my_page.contents%>
+        </div>
+        <div class="next">
+            <% if (locals.isLast){ %>
+                <h3><a href="/my_contents?series_id=<%= my_page.series_id %>">目次へ</a></h3></h3>
+            <% } else { %>
+                <h3><a href="/edit_next?contents_id=<%= my_page.contents_id%>&series_id=<%= my_page.series_id %>">次へ</a>｜<a href="/my_contents?series_id=<%= my_page.series_id %>">目次へ</a></h3>
+            <% } %>
+        </div>
+
+        <section id="modalArea" class="modalArea">
+            <div id="modalBg" class="modalBg"></div>
+                <div class="modalWrapper">
+                    <div class="modalContents">
+                        <h1>削除</h1>
+                        <p>本当に削除してもよろしいですか？</p>
+                        <input type="button" value="delete" onClick="window.location.href='/delete_page?contents_id=<%= my_page.contents_id %>&series_id=<%= my_page.series_id%>'">
+                    </div>
+                    <div id="closeModal" class="closeModal">
+                ×
+                </div>
+            </div>
+        </section>   
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

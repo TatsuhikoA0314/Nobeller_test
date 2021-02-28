@@ -1,0 +1,126 @@
+
+<%- include('../include/header'); %>
+    <body>
+        <div class="search-wrapper">
+            <h1>検索</h1>
+            <form action="/keyword_search" method="post" >
+                <input class="search_container" type="text" size="25" name="keyword" placeholder="タイトル:作者:キーワード検索">
+                <input type="submit" value="検索">  
+            </form>
+                <div class="detail">
+                    <details>
+                        <summary>詳細検索</summary>
+                        <form action="/details_search" method="post">
+                            <select name="sort_list">
+                                <option value="">ソート順</option>
+                                <option value="popular">人気順</option>
+                                <option value="new">新着順</option>
+                                <option value="update">更新順</option>
+                                <option value="rising">急上昇</option>
+                            </select>
+
+                            <select name="lang">
+                                <option value='%'>言語</option>
+                                <option value="ja">日本語</option>
+                                <option value="en">英語</option>
+                            </select>
+
+                            <select name="term">
+                                <option value="">投稿時期</option>
+                                <option value="week">一週間以内</option>
+                                <option value="month">一か月以内</option>
+                                <option value="6months">半年以内</option>
+                                <option value="year">一年以内</option>
+                                <option value="all">全て</option>
+                            </select>                            
+                            
+                            <fieldset class="basics">
+                                <legend>基本情報</legend>
+                                                        
+                                <label for="name">タイトル：</label>
+                                <input type="text" name="title">
+            
+                                <label for="author">作者：</label>
+                                <input type="text" name="author_name">        
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>ジャンル</legend>
+                                <div class="category">
+                                    <div class="category-box">
+                                        <label><input type="radio" name="category" value="中世ファンタジー"> 中世ファンタジー</label>
+                                        <label><input type="radio" name="category" value="現代ファンタジー"> 現代ファンタジー</label>
+                                        <label><input type="radio" name="category" value="SF"> SF</label>
+                                        <label><input type="radio" name="category" value="評論・研究"> 評論・研究</label>
+                                    </div>
+                                    <div class="category-box">
+                                        <label><input type="radio" name="category" value="恋愛"> 恋愛</label>
+                                        <label><input type="radio" name="category" value="ラブコメ"> ラブコメ</label>
+                                        <label><input type="radio" name="category" value="エッセイ"> エッセイ</label>
+                                        <label><input type="radio" name="category" value="童話"> 童話</label>
+                                    </div>
+                                    <div class="category-box">
+                                        <label><input type="radio" name="category" value="ホラー"> ホラー</label>
+                                        <label><input type="radio" name="category" value="ミステリー"> ミステリー</label>
+                                        <label><input type="radio" name="category" value="伝奇"> 伝奇</label>
+                                        <label><input type="radio" name="category" value="その他"> その他</label>
+                                    </div>
+                                    <div class="category-box">
+                                        <label><input type="radio" name="category" value="コメデイー・お笑い"> コメデイー・お笑い</label>
+                                        <label><input type="radio" name="category" value="詩・短歌・俳句"> 詩・短歌・俳句</label>
+                                        <label><input type="radio" name="category" value="歴史・時代劇"> 歴史・時代劇</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="submit">
+                                <input type="submit" value="送信する">
+                                <input type="reset" value="リセット">
+                            </div>
+                        </form>
+                    </details> 
+                </div>          
+
+            <% var i = 0;%>
+            <% var x;%>
+            <% var y;%>
+            <% var length = 10;%>
+            <%if(series.length==0){}else{for (x = 1; x <= Math.ceil(series.length/10); x++){%>
+                <div class="selection" id=<%= "page-"+x %>>
+                    <% if(x==Math.ceil(series.length/10)){length = series.length%10;}%>
+                        <%for (y=0; y < length; y++){%>
+                            <div class="search-list",>
+                                <a href="/contents?series_id=<%= series[i].series_id %>"><%= series[i].title %></a>：<a href="/author?author_id=<%= series[i].author_id %>"><%= series[i].author_name %></a>
+                                <i class="fas fa-heart fa-lg "><%= series[i].likes %></i> 
+                                <i class="far fa-eye fa-lg "><%= series[i].viewed %></i>
+                                <p class="description"><%= series[i].discription %></p>
+                            </div>
+                            <% i++;%>
+                        <% }%>
+                </div>
+            <% }}%>  
+
+            <div class="pagination-holder clearfix">
+                <div id="light-pagination" class="pagination">i:<%=i%></div>
+            </div>
+
+            <script>
+                $(function(){
+                    $(".pagination").pagination({
+                        items: <%=series.length%>,
+                        itemsOnPage: 10,
+                        cssStyle: 'light-theme',
+                        onPageClick: function(currentPageNumber){
+                            showPage(currentPageNumber);
+                        }
+                    })
+                });
+                function showPage(currentPageNumber){
+                    var page="#page-" + currentPageNumber;
+                    $('.selection').hide();
+                    $(page).show();
+                } 
+                </script>
+        
+    </body>
+    <%- include('../include/footer'); %>

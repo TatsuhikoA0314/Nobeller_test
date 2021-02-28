@@ -1,0 +1,63 @@
+<%- include('../include/header'); %>
+    <body>
+    <div class="post-wrapper">
+        <% if (errors.length > 0) { %>            
+            <ul class="errors">                   
+              <% errors.forEach(error => { %>            
+                <li class="red"><%= error %></li>            
+              <% }); %>            
+            </ul>            
+          <% } %>
+        <form action="/Update_series?series_id=<%= edit_series[0].series_id %>" method="post">
+            <fieldset>
+                <legend>シリーズ情報変更</legend>
+                <% if (errors.length > 0) { %>
+                    <h3>作品名：</h3>
+                    <textarea class="text-input" name="title" placeholder="作品名をこちらにお書きください。"></textarea>
+                    
+                    <h3>紹介文：</h3>
+                    <textarea class="discription-input" name="discription" placeholder="紹介文をこちらにお書きください。"></textarea>
+                <% }else{ %>
+                    <h3>作品名：</h3>
+                    <textarea class="text-input" name="title" placeholder="作品名をこちらにお書きください。"><%= edit_series[0].title%></textarea>
+                    
+                    <h3>紹介文：</h3>
+                    <textarea class="discription-input" name="discription" placeholder="紹介文をこちらにお書きください。"><%= edit_series[0].discription%> </textarea>
+                <% }%>
+                <h3>現在のジャンル：<%= edit_series[0].genre%></h3>
+                <div class="category">
+                    <div class="category-box">
+                        <label><input type="radio" name="category" value="中世ファンタジー"> 中世ファンタジー</label>
+                        <label><input type="radio" name="category" value="現代ファンタジー"> 現代ファンタジー</label>
+                        <label><input type="radio" name="category" value="SF"> SF</label>
+                        <label><input type="radio" name="category" value="評論・研究"> 評論・研究</label>
+                    </div>
+                    <div class="category-box">
+                        <label><input type="radio" name="category" value="恋愛"> 恋愛</label>
+                        <label><input type="radio" name="category" value="ラブコメ"> ラブコメ</label>
+                        <label><input type="radio" name="category" value="エッセイ"> エッセイ</label>
+                        <label><input type="radio" name="category" value="童話"> 童話</label>
+                    </div>
+                    <div class="category-box">
+                        <label><input type="radio" name="category" value="ホラー"> ホラー</label>
+                        <label><input type="radio" name="category" value="ミステリー"> ミステリー</label>
+                        <label><input type="radio" name="category" value="伝奇"> 伝奇</label>
+                        <label><input type="radio" name="category" value="その他"> その他</label>
+                    </div>
+                    <div class="category-box">
+                        <label><input type="radio" name="category" value="コメデイー・お笑い"> コメデイー・お笑い</label>
+                        <label><input type="radio" name="category" value="詩・短歌・俳句"> 詩・短歌・俳句</label>
+                        <label><input type="radio" name="category" value="歴史・時代劇"> 歴史・時代劇</label>
+                    </div>
+                </div>
+
+                <div class="submit">
+                    <input type="submit" value="送信する">
+                    <input type="reset" value="リセット">
+                </div>
+            </fieldset>   
+        </form>
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

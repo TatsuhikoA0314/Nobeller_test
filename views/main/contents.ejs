@@ -1,0 +1,37 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="conetents-wrapper">
+        <div class="conetents-detail">
+            <h1><a href="#"><%= contents[0].title %></a>：<a href="/author?author_id=<%= contents[0].author_id %>"><%= contents[0].author_name %></a>
+                <%if(locals.username == 'Guest'){%>
+                    <a href="/login%>"><i class="far fa-heart fa-lg "><%= contents[0].likes %></i></a></h1>
+                <%}else if(marking){%>
+                    <a href="/marking_remove?series_id=<%= contents[0].series_id %>"><i class="fas fa-heart fa-lg "><%= contents[0].likes %></i></a></h1>
+                    
+                <% }else{%>
+                    <a href="/marking_add?series_id=<%= contents[0].series_id %>"><i class="far fa-heart fa-lg "><%= contents[0].likes %></i></a></h1>
+                <%}%>
+                <span><%= contents[0].genre%></span>
+            <p><%= contents[0].discription %></p>
+        </div>
+
+        <div class="conetents">
+            <h1>目次</h1>
+            <div class="conetents">
+                <ul>
+                    <% contents.forEach((content) => { %>
+                        <div>
+                            <li><a href="/page?contents_id=<%= content.contents_id %>&series_id=<%= content.series_id %>">
+                                <%= content.subtitle %> </a> <span><%= content.date.getFullYear() %>/<%= content.date.getMonth()+1 %>/<%= content.date.getDate() %> <%= content.date.getHours() %>:<%= content.date.getMinutes() %>:<%= content.date.getSeconds() %></span></li>
+                        </div>
+                    <% }) %>  
+                </ul>          
+            </div>  
+        </div>
+        
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

@@ -1,0 +1,33 @@
+    
+    <%- include('../include/header'); %>
+    <body>
+        <div class="post-wrapper">
+            <% if (errors.length > 0) { %>            
+                <ul class="errors">                   
+                  <% errors.forEach(error => { %>            
+                    <li><%= error %></li>            
+                  <% }); %>            
+                </ul>            
+              <% } %>
+              <form action="/new_page?series_id=<%= add_page.series_id %>" method="post">
+                <fieldset>
+                    <legend>ページ追加</legend>
+
+                    <h3>サブタイトル：</h3>
+                    <textarea class="text-input" name="subtitle" placeholder="サブタイトルをこちらにお書きください。"></textarea>
+                    
+                    <h3>本文：</h3>
+                    <textarea class="nobel-main" name="contents" placeholder="本文をこちらにお書きください。右下よりボックスのサイズを変更できます。"></textarea> 
+                    
+                    <div class="submit">
+                        <input type="submit" value="送信する">
+                        <input type="reset" value="リセット">
+                    </div>
+                </fieldset>   
+            </form>
+            
+        </div>
+    </body>
+    <%- include('../include/footer'); %>
+</html>
+

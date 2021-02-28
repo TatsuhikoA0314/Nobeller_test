@@ -1,0 +1,27 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="author-wrapper">
+        
+        <div class="author-detail">
+            <h1><%= author[0].author_name %></h1>
+        </div>
+
+        <div class="author-conents">
+            <h1>作品タイトル</h1>
+            <ul>
+                <% author.forEach((author) => { %>
+                    <div class="search-list">
+                        <li><a href="/contents?series_id=<%= author.series_id %>">
+                            <%= author.title %> </a> <%= author.date %></li>
+                    </div>
+                <% }) %>  
+            </ul>          
+        </div>
+        
+        
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

@@ -1,0 +1,95 @@
+    
+    <%- include('../include/header'); %>
+    <body>
+        <div class="post-wrapper">
+            <% if (errors.length > 0) { %>            
+                <ul class="errors">                   
+                  <% errors.forEach(error => { %>            
+                    <li class="red"><%= error %></li>            
+                  <% }); %>            
+                </ul>            
+              <% } %>
+            <form action="/create" method="post">
+                <fieldset>
+                    <legend>作品投稿</legend>
+                    
+                    <h3>作品名：</h3>
+                    <textarea class="text-input" name="title" list="series-list" placeholder="作品名をこちらにお書きください。"></textarea>
+                    <datalist id="series-list">
+                        <% if(posts===undefined){}else{posts.forEach((post) => { %>
+                            <div>
+                                <option value="<%= post.title %>"><%= post.title %></option>
+                            </div>
+                        <% })} %>  
+                    </datalist>
+
+                    <h3>サブタイトル：</h3>
+                    <textarea class="text-input" name="subtitle" placeholder="サブタイトルをこちらにお書きください。"></textarea>
+
+                    <h3>紹介文：</h3>
+                    <textarea class="discription-input" name="discription" placeholder="紹介文をこちらにお書きください。"></textarea>
+
+                    <h3>ジャンル：</h3>
+                    <div class="category">
+                        <div class="category-box">
+                            <label><input type="radio" name="category" value="中世ファンタジー"> 中世ファンタジー</label>
+                            <label><input type="radio" name="category" value="現代ファンタジー"> 現代ファンタジー</label>
+                            <label><input type="radio" name="category" value="SF"> SF</label>
+                            <label><input type="radio" name="category" value="評論・研究"> 評論・研究</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="category" value="恋愛"> 恋愛</label>
+                            <label><input type="radio" name="category" value="ラブコメ"> ラブコメ</label>
+                            <label><input type="radio" name="category" value="エッセイ"> エッセイ</label>
+                            <label><input type="radio" name="category" value="童話"> 童話</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="category" value="ホラー"> ホラー</label>
+                            <label><input type="radio" name="category" value="ミステリー"> ミステリー</label>
+                            <label><input type="radio" name="category" value="伝奇"> 伝奇</label>
+                            <label><input type="radio" name="category" value="その他"> その他</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="category" value="コメデイー・お笑い"> コメデイー・お笑い</label>
+                            <label><input type="radio" name="category" value="詩・短歌・俳句"> 詩・短歌・俳句</label>
+                            <label><input type="radio" name="category" value="歴史・時代劇"> 歴史・時代劇</label>
+                        </div>
+                    </div>
+
+                    <h3>使用言語：</h3>
+                    <div class="category">
+                        <div class="category-box">
+                            <label><input type="radio" name="lang" value="ja" checked="checked"> 日本語</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="lang" value="en"> 英語</label>
+                        </div>
+                    </div>
+
+                    <h3>翻訳言語：</h3>
+                    <div class="category">
+                        <div class="category-box">
+                            <label><input type="radio" name="translate" value="ja"> 日本語</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="translate" value="en"> 英語</label>
+                        </div>
+                        <div class="category-box">
+                            <label><input type="radio" name="translate" value="none" checked="checked"> 翻訳しない</label>
+                        </div>
+                    </div>
+                    
+                    <h3>本文：</h3>
+                    <textarea class="nobel-main" name="contents" placeholder="本文をこちらにお書きください。右下よりボックスのサイズを変更できます。"></textarea> 
+                    
+                    <div class="submit">
+                        <input type="submit" value="送信する">
+                        <input type="reset" value="リセット">
+                    </div>
+                </fieldset>   
+            </form>
+            
+        </div>
+    </body>
+    <%- include('../include/footer'); %>
+

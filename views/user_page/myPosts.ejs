@@ -1,0 +1,27 @@
+
+<%- include('../include/header'); %>
+
+<body>
+    <div class="author-wrapper">
+        <span class="btn_div"><input type="button" value="CREATE NEW" class="new_btn" onClick="window.location.href='/post'"></span>
+        <div class="author-detail">
+            <h1><%= locals.username %></h1>
+        </div>
+
+        <div class="author-conents">
+            <h1>作品タイトル</h1>
+            <ul>
+                <% myPosts.forEach((myPost) => { %>
+                    <div class="search-list">
+                        <li><a href="/my_contents?series_id=<%= myPost.series_id %>">
+                            <%= myPost.title %> </a> <%= myPost.date %></li>
+                    </div>
+                <% }) %>    
+            </ul>          
+        </div>
+        
+        
+    </div>
+</body>
+<%- include('../include/footer'); %>
+</html>

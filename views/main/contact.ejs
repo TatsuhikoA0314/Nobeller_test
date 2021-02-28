@@ -1,0 +1,62 @@
+    <body>
+        <%- include('../include/header'); %>
+        <div class="contact-wrapper">
+            <form>
+                <h1>CONATCT</h1>
+                <fieldset>
+                    <legend>基本情報</legend>
+                                            
+                    <label for="name">お名前：</label>
+                    <input id="name" type="text" name="お名前">
+
+                    <label for="mail">メールアドレス：</label>
+                    <input id="mail" type="text" name="メールアドレス">
+
+                    <label for="phone">電話番号：</label>
+                    <input id="phone" type="text" name="電話番号">
+
+                    <label>区分</label>
+                    <input id="personal" type="radio" name="区分" value="個人の方">
+                    <label id="contact-font" for="personal">個人の方</label>
+
+                    <input id="corporation" type="radio" name="区分" value="企業の方">
+                    <label id="contact-font" for="corporation">企業の方</label>
+                    
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>お問い合わせ内容</legend><br>
+
+                    <label for="category">お問い合わせの種類</label>
+                    <select name="お問い合わせの種類" id="category">
+                        <optgroup label="サイトの不具合">
+                            <option>ページが閲覧できない</option>
+                            <option>作品を投稿できない</option>
+                            <option>翻訳が適応されない</option>
+                        </optgroup>
+                        <optgroup label="翻訳業務に関して">
+                            <option>翻訳内容について</option>
+                            <option>翻訳料金について</option>
+                            <option>支払い方法について</option>                                
+                        </optgroup>
+                        <optgroup label="-">
+                            <option>その他</option> 
+                            <option selected="selected">-</option>                     
+                        </optgroup>
+                    </select>
+                    
+                    <label for="para">本文：</label>
+                    <textarea id="para" name="本文" placeholder="お問い合わせありがとうございます。右下よりボックスのサイズを変更できます。"></textarea>
+                </fieldset>
+
+                <div class="submit">
+                    <input type="submit" value="送信する">
+                    <input type="reset" value="リセット">
+                </div>
+                
+            </form>
+        </div>     
+    </body>
+    <%- include('../include/footer'); %>
+</html>
