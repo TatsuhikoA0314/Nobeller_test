@@ -13,7 +13,7 @@ require('date-utils');
 
 const connection = mysql.createConnection({
   multipleStatements: true,
-  
+  // DB設定
 });
 
 connection.connect(function(err) {
@@ -36,16 +36,14 @@ app.use(
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use((req,res,next)=>{
-  // if (req.session.userId === undefined) {
-  //   res.locals.username = 'Guest';
-  //   res.locals.isLoggedIn = false;
-  // } else {
-    res.locals.userId = 2;
-    // req.session.userId;
-    res.locals.username = "tatsu2";
-    // req.session.username;
+  if (req.session.userId === undefined) {
+    res.locals.username = 'Guest';
+    res.locals.isLoggedIn = false;
+  } else {
+    res.locals.userId = req.session.userId;
+    res.locals.username = req.session.username;
     res.locals.isLoggedIn = true;
-  // }
+  }
   next();
 });
 
