@@ -28,9 +28,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(
   session({
-    secret: 'my_secret_key',
-    resave: false,
-    saveUninitialized: false,
+    
   })
 )
 app.use(express.static('public'));
