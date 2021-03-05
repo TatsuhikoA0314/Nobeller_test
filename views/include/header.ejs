@@ -35,6 +35,7 @@
                 
                 <div class="login-out">
                     <ul>
+                        <!-- if isLoggedIn is true show user menu -->
                         <% if (locals.isLoggedIn) { %>
                             <li>ようこそ、<a href="/"><%= locals.username %></a>さん
                                 <ul>

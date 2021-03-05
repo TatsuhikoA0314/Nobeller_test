@@ -11,10 +11,11 @@
         <div class="author-conents">
             <h1>作品タイトル</h1>
             <ul>
+                <!-- show all the series -->
                 <% myPosts.forEach((myPost) => { %>
                     <div class="search-list">
                         <li><a href="/my_contents?series_id=<%= myPost.series_id %>">
-                            <%= myPost.title %> </a> <%= myPost.date %></li>
+                            <%= myPost.title %> </a><span><%= myPost.date.getFullYear() %>/<%= myPost.date.getMonth()+1 %>/<%= myPost.date.getDate() %> <%= myPost.date.getHours() %>:<%= myPost.date.getMinutes() %>:<%= myPost.date.getSeconds() %></span> </li>
                     </div>
                 <% }) %>    
             </ul>          

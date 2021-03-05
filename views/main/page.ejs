@@ -6,11 +6,13 @@
 
         <div class="page-detail">
             <h1><a href="/contents?series_id=<%= page.series_id %>"></a><%= page.title %></a>：<a href="/author?author_id=<%= page.author_id %>"><%= page.author_name %></a></h1>
+            <!-- if isLast is true hide "次へ" -->
                 <% if (locals.isLast){ %>
                     <h3><a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3></h3>
                 <% } else { %>
                     <h3><a href="/next?contents_id=<%= page.contents_id%>&series_id=<%= page.series_id %>">次へ</a>｜<a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3>
                 <% } %>
+                <!-- page is translated viewer can edit -->
                 <% if (page.origin != 0){ %>
                 <div class="btn_div">
                     <input type="button" value="TRANSLATE" class="edit_btn" onClick="window.location.href='/viewer_edit?contents_id=<%= page.contents_id %>'">
@@ -24,6 +26,7 @@
             <%- page.contents%>
         </div>
         <div class="next">
+            <!-- if isLast is true hide "次へ" -->
             <% if (locals.isLast){ %>
                 <h3><a href="/contents?series_id=<%= page.series_id %>">目次へ</a></h3></h3>
             <% } else { %>

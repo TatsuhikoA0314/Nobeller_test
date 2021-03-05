@@ -5,6 +5,7 @@
     <div class="conetents-wrapper">
         <div class="conetents-detail">
             <h1><a href="#"><%= contents[0].title %></a>：<a href="/author?author_id=<%= contents[0].author_id %>"><%= contents[0].author_name %></a>
+                <!-- if viewer is not logged in cannot press like button -->
                 <%if(locals.username == 'Guest'){%>
                     <a href="/login%>"><i class="far fa-heart fa-lg "><%= contents[0].likes %></i></a></h1>
                 <%}else if(marking){%>
@@ -21,6 +22,7 @@
             <h1>目次</h1>
             <div class="conetents">
                 <ul>
+                    <!-- show all the pages in series -->
                     <% contents.forEach((content) => { %>
                         <div>
                             <li><a href="/page?contents_id=<%= content.contents_id %>&series_id=<%= content.series_id %>">

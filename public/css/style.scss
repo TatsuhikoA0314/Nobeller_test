@@ -126,6 +126,9 @@ body {
     padding: 30px;
     margin: 50px auto 60px;
     box-shadow: 0 0 8px gray;
+    h4{
+        text-align: center;
+    }
 
     form {
         margin: 0 0 30px 0;
@@ -834,10 +837,10 @@ div#main-wrapper {
                         text-overflow:ellipsis;
                         padding-right: 5px;
                     }
-
+    
                     span{
                         width: 30%;
-                        text-align: right;
+                        text-align: left;
                         font-size: 18px;
                         display:inline-block;
                         vertical-align: bottom;
@@ -994,15 +997,26 @@ div#main-wrapper {
                 width: 800px;
                 
                 a{
+                    width: 70%;
                     text-align: left;
                     font-size: 18px;
                     display:inline-block;
-                    width: 370px;
                     vertical-align: bottom;
                     white-space:nowrap;
                     overflow:hidden;
                     text-overflow:ellipsis;
                     padding-right: 5px;
+                }
+
+                span{
+                    width: 30%;
+                    text-align: left;
+                    font-size: 18px;
+                    display:inline-block;
+                    vertical-align: bottom;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
                 }
             }
         }

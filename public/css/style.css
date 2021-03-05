@@ -797,7 +797,7 @@ div#main-wrapper .more {
 
 .conetents-wrapper .conetents .conetents ul li span {
   width: 30%;
-  text-align: right;
+  text-align: left;
   font-size: 18px;
   display: inline-block;
   vertical-align: bottom;
@@ -954,15 +954,26 @@ div#main-wrapper .more {
 }
 
 .author-wrapper .author-conents ul li a {
+  width: 70%;
   text-align: left;
   font-size: 18px;
   display: inline-block;
-  width: 370px;
   vertical-align: bottom;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-right: 5px;
+}
+
+.author-wrapper .author-conents ul li span {
+  width: 30%;
+  text-align: left;
+  font-size: 18px;
+  display: inline-block;
+  vertical-align: bottom;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*
@@ -1147,6 +1158,10 @@ div#main-wrapper .more {
           box-shadow: 0 0 8px gray;
 }
 
+.login-wrapper h4 {
+  text-align: center;
+}
+
 .login-wrapper form {
   margin: 0 0 30px 0;
   border: 0;
@@ -1206,6 +1221,10 @@ div#main-wrapper .more {
   margin: 50px auto 60px;
   -webkit-box-shadow: 0 0 8px gray;
           box-shadow: 0 0 8px gray;
+}
+
+.signin-wrapper h4 {
+  text-align: center;
 }
 
 .signin-wrapper form {
@@ -1298,6 +1317,10 @@ footer .footer p {
   margin: 50px auto 60px;
   -webkit-box-shadow: 0 0 8px gray;
           box-shadow: 0 0 8px gray;
+}
+
+.delAccount-wrapper h4 {
+  text-align: center;
 }
 
 .delAccount-wrapper form {

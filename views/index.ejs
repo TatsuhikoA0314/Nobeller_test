@@ -28,7 +28,7 @@
                     </div>
                 </section>
             <% }}%>
-
+            <!-- modal for nitification -->
             <script>
                 $(function () { 
                 $('.openModal').click(function(){
@@ -60,7 +60,7 @@
                 <ul>
                     <% if(ranking_list===undefined){}else{for (x = 0; x < ranking_list.length; x++){ %>
                         <div class="ranking-list">
-                            <li>TITLE:<a href="/contents?series_id=<%= ranking_list[x].series_id %>"><%= ranking_list[x].title %></a>AUTHOR：<a href="#"><%= ranking_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= ranking_list[x].likes %></i> </li>
+                            <li>TITLE:<a href="/contents?series_id=<%= ranking_list[x].series_id %>"><%= ranking_list[x].title %></a>AUTHOR：<a href="/author?author_id=<%= ranking_list[x].author_id %>"><%= ranking_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= ranking_list[x].likes %></i> </li>
                         </div>
                         <% if(x > 1){%>
                             <div class="more">
@@ -78,7 +78,7 @@
                 <ul>
                     <% if(new_list===undefined){}else{for (x = 0; x < new_list.length; x++){ %>
                         <div>
-                            <li> TITLE:<a href="/contents?series_id=<%= new_list[x].series_id %>"><%= new_list[x].title %></a>AUTHOR：<a href="#"><%= new_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= new_list[x].likes %></i> </li>
+                            <li> TITLE:<a href="/contents?series_id=<%= new_list[x].series_id %>"><%= new_list[x].title %></a>AUTHOR：<a href="/author?author_id=<%= new_list[x].author_id %>"><%= new_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= new_list[x].likes %></i> </li>
                         </div>
                         <% if(x > 1){%>
                             <div class="more">
@@ -94,7 +94,7 @@
                 <ul>
                     <% if(popular_list===undefined){}else{for (x = 0; x < popular_list.length; x++){ %>
                         <div>
-                            <li>TITLE:<a href="/contents?series_id=<%= popular_list[x].series_id %>"><%= popular_list[x].title %></a>AUTHOR：<a href="#"><%= popular_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= popular_list[x].likes %></i> </li>
+                            <li>TITLE:<a href="/contents?series_id=<%= popular_list[x].series_id %>"><%= popular_list[x].title %></a>AUTHOR：<a href="/author?author_id=<%= popular_list[x].author_id %>"><%= popular_list[x].author_name %></a><i class="fa fa-heart fa-lg "><%= popular_list[x].likes %></i> </li>
                         </div>
                         <% if(x > 1){%>
                             <div class="more">

@@ -2,6 +2,7 @@
     <%- include('../include/header'); %>
     <body>
         <div class="post-wrapper">
+            <!-- if there is an error show -->
             <% if (errors.length > 0) { %>            
                 <ul class="errors">                   
                   <% errors.forEach(error => { %>            
@@ -66,13 +67,14 @@
                         </div>
                     </div>
 
+                    <p class="red">現在翻訳機能は使うことができません</p>
                     <h3>翻訳言語：</h3>
                     <div class="category">
                         <div class="category-box">
-                            <label><input type="radio" name="translate" value="ja"> 日本語</label>
+                            <label><input type="radio" name="translate" value="none"> 日本語</label>
                         </div>
                         <div class="category-box">
-                            <label><input type="radio" name="translate" value="en"> 英語</label>
+                            <label><input type="radio" name="translate" value="none"> 英語</label>
                         </div>
                         <div class="category-box">
                             <label><input type="radio" name="translate" value="none" checked="checked"> 翻訳しない</label>
